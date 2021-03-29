@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
-<title>Sistema de Gestão de Pessoas</title>
+<title>Sistema de Gestão de Pedidos</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -23,22 +23,24 @@
 <body>
 	<header th:insert="fragments/menu.html :: header"> </header>
 	<div class="container my-2">
-		<h1>Sistema de Gestão de Pessoas</h1>
-		<hr>
-		<h2>Editar Pessoa</h2>
-		<form action="#" th:action="@{/cadastros/pessoas/salvar}" th:object="${pessoa}" method="POST">
+		<h2>Editar Item Pedido</h2>
+		<form action="#" th:action="@{/cadastros/pedidoItens/salvar}" th:object="${pedidoItem}" method="POST">
 			<input type="hidden" id="id" th:field="*{id}">
 			
-			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger"></span>
-			<input type="text" th:field="*{nome}" placeholder="Nome" class="form-control mb-4 col-4">
-      		
-      		<input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
-      		<input type="text" th:field="*{telefone}" placeholder="Telefone" class="form-control mb-4 col-4">
+			<br>
+			
+			<select th:field="*{produto}" class="form-control mb-4 col-4">
+				<option th:each="produto: ${produtos}" th:value="${produto.id}" th:text="${produto.nome}"></option>
+			</select> 
+			
+			<input type="text" th:field="*{qtd}" placeholder="Quantidade" class="form-control mb-4 col-4">
+			
+			<input type="text" th:field="*{valor}" placeholder="Valor" class="form-control mb-4 col-4">
 			
 			<button type="submit" class="btn btn-info col-2">Salvar</button>
 		</form>
 		<hr>
-		<a th:href="@{/cadastros/pessoas}">Retornar para a lista de pessoas</a>
+		<a th:href="@{/cadastros/pedidoItens/{id}(id=${pedidoItem.id})}">Retornar para a lista de pedidos</a>
 	</div>
 </body>
 </html>

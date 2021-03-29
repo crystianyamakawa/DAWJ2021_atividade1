@@ -15,7 +15,8 @@ public class Pessoa {
 	private Long id;
 	
 	private String nome;
-	
+
+	//@Email
 	private String email;
 	
 	private String telefone;

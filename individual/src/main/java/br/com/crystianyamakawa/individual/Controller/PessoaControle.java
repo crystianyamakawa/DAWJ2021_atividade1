@@ -2,8 +2,6 @@ package br.com.crystianyamakawa.individual.Controller;
 
 import java.util.Optional;
 
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,18 +41,18 @@ public class PessoaControle {
 	}
 
 	
-//	@GetMapping("/cadastros/pessoas/{id}")
-//	public String alterarPessoa(@PathVariable("id") long id, Model model) {
-//		Optional<Pessoa> pessoaOpt = pessoaRepo.findCompletoById(id);
-//		if (!pessoaOpt.isPresent()) {
-//			throw new IllegalArgumentException("Pessoa Invalida.");
-//		}
-//		
-//		model.addAttribute("pessoa", pessoaOpt.get());
-//		
-//		return "cadastros/pessoas/form";
-//	}
-//
+	@GetMapping("/cadastros/pessoas/{id}")
+	public String alterarPessoa(@PathVariable("id") long id, Model model) {
+		Optional<Pessoa> pessoaOpt = pessoaRepo.findById(id);
+		if (!pessoaOpt.isPresent()) {
+			throw new IllegalArgumentException("Pessoa Invalida.");
+		}
+		
+		model.addAttribute("pessoa", pessoaOpt.get());
+		
+		return "cadastros/pessoas/form";
+	}
+
 	@PostMapping("/cadastros/pessoas/salvar")
 	public String salvarPessoa(@ModelAttribute("pessoa") Pessoa pessoa, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
@@ -64,19 +62,19 @@ public class PessoaControle {
 		pessoaRepo.save(pessoa);
 		return "redirect:/cadastros/pessoas";
 	}
-//	
-//	
-//	@GetMapping("/rh/pessoas/excluir/{id}")
-//	public String excluirPessoa(@PathVariable("id") long id, Model model) {
-//		Optional<Pessoa> pessoaOpt = pessoaRepo.findById(id);
-//		if (!pessoaOpt.isPresent()) {
-//			throw new IllegalArgumentException("Pessoa Invalida.");
-//		}
-//		
-//		pessoaRepo.delete(pessoaOpt.get());
-//		
-//		return "redirect:/rh/pessoas";
-//	}
-//
+	
+	
+	@GetMapping("/cadastros/pessoas/excluir/{id}")
+	public String excluirPessoa(@PathVariable("id") long id, Model model) {
+		Optional<Pessoa> pessoaOpt = pessoaRepo.findById(id);
+		if (!pessoaOpt.isPresent()) {
+			throw new IllegalArgumentException("Pessoa Invalida.");
+		}
+		
+		pessoaRepo.delete(pessoaOpt.get());
+		
+		return "redirect:/cadastros/pessoas";
+	}
+
 
 }

@@ -12,13 +12,11 @@ import br.com.crystianyamakawa.individual.cadastros.dtos.PedidoListaDTO;
 
 
 
-@Repository
-public interface PessoaRepositorio extends JpaRepository<Pessoa, Long>{
-//	@Query("select new br.com.crystianyamakawa.individual.cadastros.dtos.PessoaListaDTO(p.id, p.nome, p.telefone, p.email)"
-//			+ " from Pessoa ")
-//	List<PessoaListaDTO> findAllPessoaLista();
 
-//	@Query("select p from Pessoa where p.id = :id")
-//	Optional<Pessoa> findCompletoById(@Param("id") Long id);	
+@Repository
+public interface PedidoRepositorio extends JpaRepository<Pedido, Long> , PedidoRepositoryCustom {
+//	@Query("select new br.com.crystianyamakawa.individual.cadastros.dtos.PedidoListaDTO(p.id, p.dataPedido,c.nome)"
+//			+ " from Pedido p left join p.cliente c")
+//	List<PedidoListaDTO> findAllPedidoLista();
 
 }

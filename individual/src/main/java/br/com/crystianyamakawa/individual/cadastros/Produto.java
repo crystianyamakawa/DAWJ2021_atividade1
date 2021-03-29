@@ -15,7 +15,7 @@ public class Produto {
 	
 	private String nome;
 	
-	//private String valor;
+	private Float valor;
 	
 	@Deprecated
 	protected Produto() {
@@ -43,13 +43,13 @@ public class Produto {
 		this.nome = nome;
 	}
 
-//	public String getValor() {
-//		return valor;
-//	}
-//
-//	public void setValor(String valor) {
-//		this.valor = valor;
-//	}
+	public Float getValor() {
+		return valor;
+	}
+
+	public void setValor(Float valor) {
+		this.valor = valor;
+	}
 
 	@Override
 	public int hashCode() {

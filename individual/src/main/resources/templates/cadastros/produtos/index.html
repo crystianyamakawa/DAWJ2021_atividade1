@@ -11,8 +11,8 @@
 
 </head>
 <body>
+	<header th:insert="fragments/menu.html :: header"> </header>
 		<div class="container my-2">
-		<a th:href="@{/rh/produtos/nova}" class="btn btn-primary btn-sm mb-3">Incluir Produto</a>
 		<h1>Pessoas</h1>
 		<table border="1" class="table table-striped table-responsive-md">
 			<thead>
@@ -27,12 +27,13 @@
 					<td th:text="${produto.nome}"></td>
 					<td th:text="${produto.valor}"></td>
 					<td>
-						<a th:href="@{/cadastro/produtos/{id}(id=${produto.id})}" class="btn btn-primary">Alterar</a>
-						<a th:href="@{/cadastro/produtos/excluir/{id}(id=${produto.id})}" class="btn btn-danger">Excluir</a>			
+						<a th:href="@{/cadastros/produtos/{id}(id=${produto.id})}" class="btn btn-primary">Alterar</a>
+						<a th:href="@{/cadastros/produtos/excluir/{id}(id=${produto.id})}" class="btn btn-danger">Excluir</a>			
 					</td>
 				</tr>
 			</tbody>
 		</table>
+		<a th:href="@{/cadastros/produtos/nova}" class="btn btn-primary btn-sm mb-3">Incluir Produto</a>
 	</div>
 </body>
 </html>
