@@ -1,0 +1,28 @@
+Exercícios Teóricos
+
+ET1) Descreva com suas palavras o funcionamento dos protocolos HTTP e HTTPS.
+Explique quais são as principais diferenças entre os dois protocolos.
+-O HTTP é baseado na estrutura cliente-servidor que trafega na camada de aplicativo,
+onde o cliente normalmente um browser faz requisições para um servidor,
+que responde um documento hipertexto que pode conter videos, imagens ou outros arquivos, as informações são trafegadas
+em texto, possibilitando a sua  interceptação, leitura e alteração das informações.
+-O HTTPS é o mesmo protocolo HTTP acrescido de uma camada de segurança SSL/TLS para garantir através da criptografia
+que as mensagens somente serão lidas apenas pelo cliente em expecifico e seu servidor. Outro componente que prove segurança
+é a utilização de um par de chaves publicas e privadas que são trocadas no inicio da comunicação é depois utilizadas para a
+decodificação dos pacotes.
+
+
+ET2) Descreva com suas palavras o que é Representational State Transfer (REST).
+O REST é uma arquitetura de software baseada em servicos que devem possuir as operações POST, GET, PUT e DELETE.
+Seu intuito é desacoplar as funcionalidades criando um padrão para uso dos recursos por diversos aplicativos.
+
+
+ET3) Escolha um dos ataques catalogados pela OWASP Foundation (https://owasp.org/www-community/attacks/).
+Pesquise sobre o ataque escolhido e sobre quais medidas devem ser tomadas para proteger um sistema de tal ataque.
+CORS OriginHeaderScrutiny-
+O CORS permite o compartilhamento dos webservices, incorporando ao protocolo HTTP um cabeçalho de controle de permissão de acesso no 
+retorno da primeira request com o parâmetro Access-Control-Allow-Origin que indica se o cliente possui permissão para acessar os dados. 
+Como o controle das requisições é feito pelo cliente, é possivel manipular e solicitar outra requesição.
+Contra Medidas, incluir na requisição a obrigatoriedade das credenciais do usuario e aplicação. Outra contra medida é adota o padrão 
+CORS Request PreFligth, que inclui uma troca de mensagens inicial, cujo retorno contem o endereço para o serviço pesquisado, forçando 
+o client a tratar esta segunda requisição para ter o serviço atendido. 
